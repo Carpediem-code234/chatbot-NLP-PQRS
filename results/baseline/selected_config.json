@@ -1,0 +1,12 @@
+{
+  "config": {
+    "features": "word+char",
+    "ngram": "large",
+    "C": 10.0,
+    "class_weight": null
+  },
+  "dev_f1_macro": 0.7045595336036512,
+  "cv_f1_macro_mean": 0.6654106994462499,
+  "configs_dentro_de_0.01_de_la_mejor_en_dev": 3,
+  "seed": 42
+}

@@ -1,0 +1,34 @@
+id,text,etiqueta_real,style,template_id,prediccion,confianza
+PQRS-0052,Ayuda eso!,no_entendido,simplificado,no_entendido__sim__3,urgencia_medica,0.4609
+PQRS-0077,¿Todavía tengo cita con el doctor esta semana?,consultar_cita,coloquial,consultar_cita__col__3,solicitar_cita,0.8542
+PQRS-0093,Solicito ambulancia de inmediato por una hemorragia.,urgencia_medica,formal,urgencia_medica__for__3,fuera_de_alcance,0.1542
+PQRS-0100,"oiga, ¿todavía tengo cita con el doctor esta semana? por favor",consultar_cita,coloquial,consultar_cita__col__3,solicitar_cita,0.7823
+PQRS-0164,ayuda eso,no_entendido,simplificado,no_entendido__sim__3,urgencia_medica,0.4635
+PQRS-0169,"Hola, ¿Qué hora es en Japón? Gracias!",fuera_de_alcance,coloquial,fuera_de_alcance__col__3,peticion_informacion,0.4414
+PQRS-0174,"bueno es que, este, o sea",no_entendido,coloquial,no_entendido__col__3,sugerencia,0.1956
+PQRS-0192,"Buenas tardes, requiero verificar en qué etapa se encuentra mi petición.",estado_pqrs,formal,estado_pqrs__for__3,peticion_informacion,0.1359
+PQRS-0194,Solicito explicación por la tardanza en la autorización de mi procedimiento.,reclamo_demora,formal,reclamo_demora__for__3,autorizacion,0.9127
+PQRS-0225,"Oiga, ¿Todavía tengo cita con el doctor esta semana? Gracias.",consultar_cita,coloquial,consultar_cita__col__3,solicitar_cita,0.7961
+PQRS-0239,"Cordial saludo, sugiero incorporar intérpretes en lenguas nativas en la atención. Agradezco su pronta respuesta.",sugerencia,formal,sugerencia__for__3,queja_atencion,0.2017
+PQRS-0262,¿Cómo me afilio?,peticion_informacion,simplificado,peticion_informacion__sim__3,saludo,0.2013
+PQRS-0269,"Buenas tardes, ¿Cuál es el valor actual del dólar?",fuera_de_alcance,formal,fuera_de_alcance__for__3,saludo,0.2164
+PQRS-0291,"Oiga, ¿Qué hora es en Japón? Gracias.",fuera_de_alcance,coloquial,fuera_de_alcance__col__3,peticion_informacion,0.5099
+PQRS-0310,"Cordial saludo, ¿Cuál es el valor actual del dólar?",fuera_de_alcance,formal,fuera_de_alcance__for__3,queja_atencion,0.1382
+PQRS-0331,"Buenos días, solicito explicación por la tardanza en la autorización de mi procedimiento.",reclamo_demora,formal,reclamo_demora__for__3,autorizacion,0.869
+PQRS-0362,Qué demora tan larga para una cita. Gracias!,reclamo_demora,coloquial,reclamo_demora__col__3,solicitar_cita,0.4885
+PQRS-0371,Hola. ¿Cuánto cuesta un carro? Por favor.,fuera_de_alcance,simplificado,fuera_de_alcance__sim__3,hablar_agente,0.419
+PQRS-0373,¿Qué hora es en Japón?,fuera_de_alcance,coloquial,fuera_de_alcance__col__3,peticion_informacion,0.6099
+PQRS-0402,Quisiera dejar sin efecto mi cita con el especialista.,cancelar_cita,formal,cancelar_cita__for__3,consultar_cita,0.5291
+PQRS-0428,Mejor que me atienda un humano.,hablar_agente,coloquial,hablar_agente__col__3,sugerencia,0.2649
+PQRS-0478,Requiero verificar en qué etapa se encuentra mi petición.,estado_pqrs,formal,estado_pqrs__for__3,peticion_informacion,0.2033
+PQRS-0480,¿Cuánto cuesta un carro?,fuera_de_alcance,simplificado,fuera_de_alcance__sim__3,hablar_agente,0.2105
+PQRS-0491,Qué demora tan larga para una cita.,reclamo_demora,coloquial,reclamo_demora__col__3,solicitar_cita,0.5103
+PQRS-0495,"Buenas, mejor que me atienda un humano. Gracias.",hablar_agente,coloquial,hablar_agente__col__3,sugerencia,0.2443
+PQRS-0498,Deseo saber qué especialidades se atienden en esta clínica.,peticion_informacion,formal,peticion_informacion__for__3,reclamo_demora,0.1544
+PQRS-0501,Hola. ¿Cómo me afilio? Por favor!,peticion_informacion,simplificado,peticion_informacion__sim__3,saludo,0.2767
+PQRS-0506,"Oiga, ¿Todavía tengo cita con el doctor esta semana? Por favor.",consultar_cita,coloquial,consultar_cita__col__3,solicitar_cita,0.7969
+PQRS-0518,"Cordial saludo, quisiera dejar sin efecto mi cita con el especialista. Agradezco su pronta respuesta.",cancelar_cita,formal,cancelar_cita__for__3,consultar_cita,0.3241
+PQRS-0528,¿Cuál es el valor actual del dólar?,fuera_de_alcance,formal,fuera_de_alcance__for__3,no_entendido,0.1396
+PQRS-0587,¿Cuánto cuesta un carro? Por favor.,fuera_de_alcance,simplificado,fuera_de_alcance__sim__3,hablar_agente,0.4233
+PQRS-0640,hola. ¿cómo me afilio?,peticion_informacion,simplificado,peticion_informacion__sim__3,saludo,0.5858
+PQRS-0649,Ayuda eso.,no_entendido,simplificado,no_entendido__sim__3,urgencia_medica,0.4278

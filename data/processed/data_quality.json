@@ -1,0 +1,18 @@
+{
+  "input_rows": 259,
+  "null_text_rows_discarded": 6,
+  "blank_text_rows_discarded": 5,
+  "duplicate_rows_discarded": 21,
+  "output_rows": 227,
+  "conflicting_text_label_groups": 0,
+  "rows": 227,
+  "labels": [
+    "consultar_autorizacion",
+    "queja_atencion",
+    "reclamo_medicamentos",
+    "solicitar_cita"
+  ],
+  "missing_expected_labels": [],
+  "null_texts": 0,
+  "blank_texts": 0
+}

@@ -22,3 +22,9 @@ venv/
 # OS/editor files
 .DS_Store
 Thumbs.db
+
+# Pesos/modelos: se regeneran con los scripts (el baseline pesa <1 MB, pero no se versiona por defecto)
+models/*
+!models/.gitkeep
+# Candados de evaluación de test: SÍ versionar (auditoría). Salidas voluminosas:
+results/**/*.npy

@@ -1,0 +1,511 @@
+{
+  "n": 133,
+  "accuracy": 0.7969924812030075,
+  "precision_macro": 0.7823249666999668,
+  "recall_macro": 0.8007868867243867,
+  "f1_macro": 0.7734942673948597,
+  "f1_weighted": 0.7767205673758636,
+  "per_class": {
+    "autorizacion": {
+      "precision": 1.0,
+      "recall": 0.8888888888888888,
+      "f1": 0.9411764705882353,
+      "support": 9
+    },
+    "cancelar_cita": {
+      "precision": 0.9,
+      "recall": 1.0,
+      "f1": 0.9473684210526315,
+      "support": 9
+    },
+    "consultar_cita": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 8
+    },
+    "despedida": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 7
+    },
+    "estado_pqrs": {
+      "precision": 0.6666666666666666,
+      "recall": 0.7272727272727273,
+      "f1": 0.6956521739130435,
+      "support": 11
+    },
+    "fuera_de_alcance": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 8
+    },
+    "hablar_agente": {
+      "precision": 0.7272727272727273,
+      "recall": 1.0,
+      "f1": 0.8421052631578947,
+      "support": 8
+    },
+    "medicamentos": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 8
+    },
+    "no_entendido": {
+      "precision": 0.4,
+      "recall": 0.6666666666666666,
+      "f1": 0.5,
+      "support": 3
+    },
+    "peticion_informacion": {
+      "precision": 0.6666666666666666,
+      "recall": 0.3333333333333333,
+      "f1": 0.4444444444444444,
+      "support": 12
+    },
+    "queja_atencion": {
+      "precision": 1.0,
+      "recall": 0.625,
+      "f1": 0.7692307692307693,
+      "support": 8
+    },
+    "reclamo_demora": {
+      "precision": 0.6923076923076923,
+      "recall": 1.0,
+      "f1": 0.8181818181818182,
+      "support": 9
+    },
+    "saludo": {
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571428571428571,
+      "support": 6
+    },
+    "solicitar_cita": {
+      "precision": 0.7142857142857143,
+      "recall": 1.0,
+      "f1": 0.8333333333333334,
+      "support": 10
+    },
+    "sugerencia": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 10
+    },
+    "urgencia_medica": {
+      "precision": 1.0,
+      "recall": 0.5714285714285714,
+      "f1": 0.7272727272727273,
+      "support": 7
+    }
+  },
+  "confusion_matrix": [
+    [
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      9,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      7,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      8,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      3,
+      0,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      4,
+      0,
+      3,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      2,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      9,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      10,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      10,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4
+    ]
+  ],
+  "prediction_distribution": {
+    "solicitar_cita": 14,
+    "sugerencia": 10,
+    "autorizacion": 8,
+    "peticion_informacion": 6,
+    "cancelar_cita": 10,
+    "reclamo_demora": 13,
+    "medicamentos": 8,
+    "hablar_agente": 11,
+    "no_entendido": 5,
+    "saludo": 8,
+    "despedida": 7,
+    "queja_atencion": 5,
+    "estado_pqrs": 12,
+    "consultar_cita": 8,
+    "urgencia_medica": 4,
+    "fuera_de_alcance": 4
+  },
+  "bootstrap": {
+    "f1_macro_ci_low": 0.6300060305742851,
+    "f1_macro_ci_high": 0.8662780691004471,
+    "n_boot": 1000,
+    "n_clusters": 48,
+    "seed": 42
+  },
+  "critical": {
+    "urgencia_medica": {
+      "precision": 1.0,
+      "recall": 0.5714285714285714,
+      "f1": 0.7272727272727273,
+      "support": 7,
+      "n_predichos": 4,
+      "reales_clasificados_como": {
+        "no_entendido": 3
+      },
+      "falsas_alarmas_desde": {}
+    },
+    "hablar_agente": {
+      "precision": 0.7272727272727273,
+      "recall": 1.0,
+      "f1": 0.8421052631578947,
+      "support": 8,
+      "n_predichos": 11,
+      "reales_clasificados_como": {},
+      "falsas_alarmas_desde": {
+        "estado_pqrs": 2,
+        "fuera_de_alcance": 1
+      }
+    },
+    "no_entendido": {
+      "precision": 0.4,
+      "recall": 0.6666666666666666,
+      "f1": 0.5,
+      "support": 3,
+      "n_predichos": 5,
+      "reales_clasificados_como": {
+        "solicitar_cita": 1
+      },
+      "falsas_alarmas_desde": {
+        "urgencia_medica": 3
+      }
+    }
+  },
+  "top_confusions": [
+    [
+      "peticion_informacion",
+      "fuera_de_alcance",
+      4
+    ],
+    [
+      "fuera_de_alcance",
+      "estado_pqrs",
+      3
+    ],
+    [
+      "peticion_informacion",
+      "reclamo_demora",
+      3
+    ],
+    [
+      "urgencia_medica",
+      "no_entendido",
+      3
+    ],
+    [
+      "estado_pqrs",
+      "hablar_agente",
+      2
+    ],
+    [
+      "fuera_de_alcance",
+      "peticion_informacion",
+      2
+    ],
+    [
+      "queja_atencion",
+      "solicitar_cita",
+      2
+    ],
+    [
+      "autorizacion",
+      "saludo",
+      1
+    ],
+    [
+      "estado_pqrs",
+      "reclamo_demora",
+      1
+    ],
+    [
+      "fuera_de_alcance",
+      "cancelar_cita",
+      1
+    ]
+  ]
+}

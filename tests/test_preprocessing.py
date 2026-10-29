@@ -1,34 +1,31 @@
+import sys
+from pathlib import Path
 import pandas as pd
 
-from pqrs_nlp.models import build_models
-from pqrs_nlp.preprocessing import normalize_text
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from src.preprocessing import clean_text, select_train_dev
 
 
-def test_normalization_preserves_negation_and_accents():
-    assert normalize_text("  NO   recibí  el medicamento\t") == "no recibí el medicamento"
-    assert normalize_text(None) == ""
-    assert normalize_text(float("nan")) == ""
-    assert normalize_text(pd.NA) == ""
+def test_keeps_accents_negations_and_punctuation():
+    t = "No me atendieron, ¡sin ninguna explicación!"
+    assert clean_text(t) == t
 
 
-def test_all_pipelines_fit_and_predict_text():
-    X = pd.Series([
-        "Necesito una cita con cardiología",
-        "Quiero quejarme por la atención recibida",
-        "No me entregan el medicamento",
-        "Quiero consultar mi autorización",
-        "Solicito una cita de medicina general",
-        "Me atendieron muy mal y quiero una queja",
-        "Solicito entrega de insulina",
-        "¿Ya está lista mi autorización?",
-    ])
-    y = pd.Series([
-        "solicitar_cita", "queja_atencion", "reclamo_medicamentos",
-        "consultar_autorizacion", "solicitar_cita", "queja_atencion",
-        "reclamo_medicamentos", "consultar_autorizacion",
-    ])
-    for model in build_models().values():
-        model.fit(X, y)
-        predictions = model.predict(X[:2])
-        assert len(predictions) == 2
-        assert set(predictions) <= set(y)
+def test_collapses_whitespace_and_strips():
+    assert clean_text("  hola \n  amigo\t ") == "hola amigo"
+
+
+def test_unicode_nfc_equivalence():
+    assert clean_text("cafe\u0301") == clean_text("café")
+
+
+def test_idempotent():
+    s = "  ¿Cuándo es   mi cita? "
+    assert clean_text(clean_text(s)) == clean_text(s)
+
+
+def test_select_train_dev_excludes_test():
+    df = pd.DataFrame({"split": ["train", "dev", "test", "test"], "x": range(4)})
+    out = select_train_dev(df)
+    assert set(out["split"]) == {"train", "dev"} and len(out) == 2

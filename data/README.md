@@ -1,33 +1,8 @@
-# Datos del proyecto
+# Datos
 
-`processed/pqrs_sinteticas_limpias.csv` se genera localmente con
-`python scripts/prepare_dataset.py`. Su fuente es un generador reproducible de
-plantillas del repositorio; **no** son solicitudes reales ni datos de pacientes.
-La semilla por defecto es `42`. El proceso introduce deliberadamente erratas,
-registros vacíos o nulos y duplicados para poder medir su tratamiento.
-
-El CSV conserva:
-
-| Columna | Uso |
-|---|---|
-| `id_registro` | Trazabilidad sintética; no se usa como característica. |
-| `template_id` | Grupo para separar plantillas entre particiones; no se usa para predecir. |
-| `texto_original` | Texto antes de la inyección sintética de ruido. |
-| `texto_usuario` | Texto de entrada al clasificador. |
-| `texto_normalizado` | Mayúsculas y espacios normalizados de forma conservadora. |
-| `intencion` | Etiqueta objetivo con cuatro clases. |
-| `nivel_lenguaje` | Metadato para análisis posterior, nunca entrada del clasificador. |
-| `entidades_etiquetadas` | Metadato descriptivo, nunca entrada del clasificador. |
-| `ruido_introducido` | Indicador sintético de la modificación ortográfica. |
-| `tipo_ruido` | Tipo de ruido o causa de invalidez registrada. |
-
-La preparación descarta textos nulos/vacíos, detecta y rechaza mensajes
-normalizados con etiquetas incompatibles, y elimina duplicados conservando la
-primera fila. El recuento por causa se escribe en
-`processed/data_quality.json`. El generador registra los identificadores de
-plantilla de origen; no se reconstruyen metadatos de filas antiguas.
-
-`wayuunaiki_basico` es una categoría experimental: las expresiones mezclan
-elementos léxicos del material exploratorio con español y no cuentan con
-validación lingüística independiente. No representan traducciones sanitarias
-validadas ni permiten afirmar que el sistema atienda en wayuunaiki.
+- `raw/pqrs_sintetico.csv` y `raw/pqrs_sintetico.jsonl`: copia **sin modificar** de la Fase 1 (verificar con `sha256sum -c SHA256SUMS`). El CSV y el JSONL son idénticos (comprobado en `tests/test_data.py`).
+- `processed/audit_sheet.csv`: hoja de auditoría humana (290 filas: test completo, todas las `urgencia_medica` y `hablar_agente`, y muestra estratificada de train/dev con semilla 42). Las columnas `etiqueta_revisor`, `acuerdo_etiqueta`, `notas_revisor` y `revisor` están **vacías a propósito**: las completa una persona.
+- Todos los registros siguen en `review_status = pendiente_revision_humana`. Ninguna transformación modifica el texto original.
+- Los datos son **sintéticos y ficticios**; no representan PQRS reales.
+- El corpus español–wayuunaiki (AmericasNLP/RLTranslator) es un corpus de traducción y **no se usa** como dato supervisado de intención.
+- No usar `safety_flags`, `style`, `template_id`, `id` como características: `safety_flags` identifica sin ambigüedad 3 intenciones.

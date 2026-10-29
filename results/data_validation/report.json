@@ -1,0 +1,424 @@
+{
+  "checks": {
+    "columnas": {
+      "status": "ok",
+      "detail": {
+        "faltantes": [],
+        "extra": []
+      }
+    },
+    "tipos_texto": {
+      "status": "ok",
+      "detail": {
+        "columnas_no_texto": []
+      }
+    },
+    "textos_vacios": {
+      "status": "ok",
+      "detail": {
+        "n": 0
+      }
+    },
+    "ids_unicos": {
+      "status": "ok",
+      "detail": {
+        "duplicados": 0
+      }
+    },
+    "etiquetas_validas": {
+      "status": "ok",
+      "detail": {
+        "invalidas": [],
+        "ausentes": [],
+        "n_clases": 16
+      }
+    },
+    "splits_validos": {
+      "status": "ok",
+      "detail": {
+        "invalidos": [],
+        "conteo": {
+          "train": 398,
+          "test": 133,
+          "dev": 127
+        }
+      }
+    },
+    "estilos_validos": {
+      "status": "ok",
+      "detail": {
+        "invalidos": []
+      }
+    },
+    "cobertura_intencion_split": {
+      "status": "warning",
+      "detail": {
+        "sin_ejemplos": [],
+        "menos_de_5": [
+          [
+            "no_entendido",
+            "test",
+            3
+          ]
+        ],
+        "min_por_celda": 3
+      }
+    },
+    "duplicados_exactos": {
+      "status": "warning",
+      "detail": {
+        "filas": 2,
+        "ids": [
+          "PQRS-0560",
+          "PQRS-0654"
+        ]
+      }
+    },
+    "duplicados_normalizados": {
+      "status": "warning",
+      "detail": {
+        "grupos": 65,
+        "filas_en_grupos": 155,
+        "filas_redundantes": 90,
+        "textos_unicos": 568,
+        "unicos_por_split": {
+          "dev": 108,
+          "test": 117,
+          "train": 343
+        },
+        "grupos_que_cruzan_splits": 0,
+        "grupos_con_etiquetas_distintas": 0
+      }
+    },
+    "conflicto_mismo_texto_distinta_etiqueta": {
+      "status": "ok",
+      "detail": {
+        "n": 0
+      }
+    },
+    "fuga_template_id": {
+      "status": "ok",
+      "detail": {
+        "plantillas": 240,
+        "plantillas_en_mas_de_un_split": 0,
+        "plantillas_por_split": {
+          "dev": 48,
+          "test": 48,
+          "train": 144
+        }
+      }
+    },
+    "plantilla_una_sola_intencion": {
+      "status": "ok",
+      "detail": {
+        "plantillas_con_varias_intenciones": 0
+      }
+    },
+    "split_determinado_por_indice_plantilla": {
+      "status": "warning",
+      "detail": {
+        "descripcion": "cada índice final de template_id cae en una sola partición",
+        "tabla": {
+          "0": {
+            "dev": 0,
+            "test": 0,
+            "train": 139
+          },
+          "1": {
+            "dev": 0,
+            "test": 0,
+            "train": 122
+          },
+          "2": {
+            "dev": 0,
+            "test": 0,
+            "train": 137
+          },
+          "3": {
+            "dev": 127,
+            "test": 0,
+            "train": 0
+          },
+          "4": {
+            "dev": 0,
+            "test": 133,
+            "train": 0
+          }
+        },
+        "filas_por_plantilla": {
+          "count": 240.0,
+          "mean": 2.74,
+          "std": 0.96,
+          "min": 1.0,
+          "25%": 2.0,
+          "50%": 3.0,
+          "75%": 4.0,
+          "max": 4.0
+        }
+      }
+    },
+    "solapamiento_dev_test_vs_train": {
+      "status": "ok",
+      "detail": {
+        "dev": {
+          "sim_max_media": 0.492,
+          "sim_max_mediana": 0.463,
+          "n_sim_ge_0.9": 0,
+          "n_sim_ge_0.8": 6,
+          "acierto_1nn_en_train": 0.575,
+          "alto_parecido_distinta_etiqueta": 0
+        },
+        "test": {
+          "sim_max_media": 0.525,
+          "sim_max_mediana": 0.524,
+          "n_sim_ge_0.9": 0,
+          "n_sim_ge_0.8": 7,
+          "acierto_1nn_en_train": 0.602,
+          "alto_parecido_distinta_etiqueta": 0
+        }
+      }
+    },
+    "review_status": {
+      "status": "warning",
+      "detail": {
+        "conteo": {
+          "pendiente_revision_humana": 658
+        },
+        "filas_no_revisadas": 658,
+        "nota": "Resultados deben marcarse como sintéticos pendientes de validación."
+      }
+    },
+    "wayuu_status": {
+      "status": "ok",
+      "detail": {
+        "conteo": {
+          "no_incluida_pendiente_validacion": 658
+        }
+      }
+    },
+    "idioma": {
+      "status": "ok",
+      "detail": {
+        "conteo": {
+          "es": 658
+        }
+      }
+    },
+    "safety_flags_vs_intencion": {
+      "status": "warning",
+      "detail": {
+        "desviaciones_esperadas": {},
+        "otras_intenciones_con_bandera": {},
+        "mapeo": {
+          "autorizacion": [
+            "ninguna"
+          ],
+          "cancelar_cita": [
+            "ninguna"
+          ],
+          "consultar_cita": [
+            "ninguna"
+          ],
+          "despedida": [
+            "ninguna"
+          ],
+          "estado_pqrs": [
+            "ninguna"
+          ],
+          "fuera_de_alcance": [
+            "ninguna"
+          ],
+          "hablar_agente": [
+            "escalamiento_humano"
+          ],
+          "medicamentos": [
+            "ninguna"
+          ],
+          "no_entendido": [
+            "baja_confianza"
+          ],
+          "peticion_informacion": [
+            "ninguna"
+          ],
+          "queja_atencion": [
+            "ninguna"
+          ],
+          "reclamo_demora": [
+            "ninguna"
+          ],
+          "saludo": [
+            "ninguna"
+          ],
+          "solicitar_cita": [
+            "ninguna"
+          ],
+          "sugerencia": [
+            "ninguna"
+          ],
+          "urgencia_medica": [
+            "urgencia_medica;prioridad_alta"
+          ]
+        },
+        "max_intenciones_por_valor_de_bandera": 13,
+        "conclusion": "safety_flags identifica 3 intenciones sin ambigüedad: NO usar como característica; solo como referencia para la capa de reglas y auditoría."
+      }
+    },
+    "conflictos_lexicos_heuristicos": {
+      "status": "warning",
+      "detail": {
+        "urgencia_lexico_en_otra_intencion": [],
+        "urgencia_sin_lexico": [
+          {
+            "id": "PQRS-0333",
+            "text": "Requiero atención inmediata, presento dolor intenso en el pecho.",
+            "intent": "urgencia_medica",
+            "split": "train"
+          }
+        ],
+        "agente_lexico_en_otra_intencion": [
+          {
+            "id": "PQRS-0278",
+            "text": "Se trata de una emergencia, hay una persona inconsciente.",
+            "intent": "urgencia_medica",
+            "split": "train"
+          }
+        ],
+        "agente_sin_lexico": [
+          {
+            "id": "PQRS-0356",
+            "text": "Hola. Pásame con alguien. Gracias.",
+            "intent": "hablar_agente",
+            "split": "train"
+          },
+          {
+            "id": "PQRS-0404",
+            "text": "Pásame con alguien.",
+            "intent": "hablar_agente",
+            "split": "train"
+          },
+          {
+            "id": "PQRS-0409",
+            "text": "Pásame con alguien. Por favor.",
+            "intent": "hablar_agente",
+            "split": "train"
+          },
+          {
+            "id": "PQRS-0444",
+            "text": "Hola. Pásame con alguien. Por favor.",
+            "intent": "hablar_agente",
+            "split": "train"
+          }
+        ],
+        "nota": "Heurístico: cada caso requiere revisión humana; no implica error de etiqueta."
+      }
+    },
+    "artefactos_generador": {
+      "status": "ok",
+      "detail": {
+        "cierre_por_intencion_max_exclamacion": 0.33,
+        "palabras_por_estilo": {
+          "coloquial": 7.0,
+          "formal": 11.5,
+          "simplificado": 4.4
+        },
+        "palabras_por_intencion_min_max": [
+          2.1,
+          9.7
+        ]
+      }
+    }
+  },
+  "n_rows": 658,
+  "distribucion_intencion_split": {
+    "autorizacion": {
+      "train": 31,
+      "dev": 8,
+      "test": 9
+    },
+    "cancelar_cita": {
+      "train": 28,
+      "dev": 8,
+      "test": 9
+    },
+    "consultar_cita": {
+      "train": 25,
+      "dev": 10,
+      "test": 8
+    },
+    "despedida": {
+      "train": 21,
+      "dev": 7,
+      "test": 7
+    },
+    "estado_pqrs": {
+      "train": 24,
+      "dev": 7,
+      "test": 11
+    },
+    "fuera_de_alcance": {
+      "train": 25,
+      "dev": 9,
+      "test": 8
+    },
+    "hablar_agente": {
+      "train": 29,
+      "dev": 7,
+      "test": 8
+    },
+    "medicamentos": {
+      "train": 28,
+      "dev": 7,
+      "test": 8
+    },
+    "no_entendido": {
+      "train": 14,
+      "dev": 5,
+      "test": 3
+    },
+    "peticion_informacion": {
+      "train": 28,
+      "dev": 8,
+      "test": 12
+    },
+    "queja_atencion": {
+      "train": 27,
+      "dev": 10,
+      "test": 8
+    },
+    "reclamo_demora": {
+      "train": 25,
+      "dev": 8,
+      "test": 9
+    },
+    "saludo": {
+      "train": 17,
+      "dev": 7,
+      "test": 6
+    },
+    "solicitar_cita": {
+      "train": 29,
+      "dev": 10,
+      "test": 10
+    },
+    "sugerencia": {
+      "train": 30,
+      "dev": 10,
+      "test": 10
+    },
+    "urgencia_medica": {
+      "train": 17,
+      "dev": 6,
+      "test": 7
+    }
+  },
+  "resumen": {
+    "critical": 0,
+    "warning": 7,
+    "ok": 14
+  },
+  "intents_criticos": [
+    "urgencia_medica",
+    "hablar_agente",
+    "no_entendido"
+  ]
+}

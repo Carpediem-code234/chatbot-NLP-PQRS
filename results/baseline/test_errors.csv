@@ -1,0 +1,28 @@
+id,text,etiqueta_real,style,template_id,prediccion,confianza
+PQRS-0024,Quiero jugar.,fuera_de_alcance,simplificado,fuera_de_alcance__sim__4,cancelar_cita,0.1931
+PQRS-0027,quiero jugar. por favor,fuera_de_alcance,simplificado,fuera_de_alcance__sim__4,hablar_agente,0.1945
+PQRS-0037,Hola. Quiero poner una queja. Por favor.,queja_atencion,simplificado,queja_atencion__sim__4,solicitar_cita,0.2301
+PQRS-0055,"Hola. Orden del médico, ¿cómo la autorizo?",autorizacion,simplificado,autorizacion__sim__4,saludo,0.2847
+PQRS-0061,"se cayó y no se mueve, ayúdenme",urgencia_medica,coloquial,urgencia_medica__col__4,no_entendido,0.1997
+PQRS-0087,Quiero poner una queja. Gracias.,queja_atencion,simplificado,queja_atencion__sim__4,estado_pqrs,0.2283
+PQRS-0092,"Cordial saludo, consulto el estado de la solicitud que presenté ante la entidad. Agradezco su pronta respuesta.",estado_pqrs,formal,estado_pqrs__for__4,hablar_agente,0.2008
+PQRS-0129,Quiero poner una queja.,queja_atencion,simplificado,queja_atencion__sim__4,solicitar_cita,0.2207
+PQRS-0214,Ayúdame con mi tarea de matemáticas.,fuera_de_alcance,coloquial,fuera_de_alcance__col__4,estado_pqrs,0.268
+PQRS-0224,"oiga, ¿cómo se hace para que me atiendan aquí?",peticion_informacion,coloquial,peticion_informacion__col__4,reclamo_demora,0.2048
+PQRS-0233,"Buenos días, consulto el estado de la solicitud que presenté ante la entidad.",estado_pqrs,formal,estado_pqrs__for__4,reclamo_demora,0.1284
+PQRS-0245,"hola, ¿cómo se hace para que me atiendan aquí?",peticion_informacion,coloquial,peticion_informacion__col__4,saludo,0.2787
+PQRS-0268,"Buenas tardes, consulto el estado de la solicitud que presenté ante la entidad. Agradezco su pronta respuesta.",estado_pqrs,formal,estado_pqrs__for__4,hablar_agente,0.2308
+PQRS-0285,"Se cayó y no se mueve, ayúdenme!",urgencia_medica,coloquial,urgencia_medica__col__4,no_entendido,0.2021
+PQRS-0304,"Buenos días, solicito información sobre trámites de licencia de conducción.",fuera_de_alcance,formal,fuera_de_alcance__for__4,peticion_informacion,0.3849
+PQRS-0334,hola. quiero jugar. gracias,fuera_de_alcance,simplificado,fuera_de_alcance__sim__4,solicitar_cita,0.2089
+PQRS-0338,"En relación con el tema, lo señalado.",no_entendido,formal,no_entendido__for__4,solicitar_cita,0.1626
+PQRS-0364,"Buenas, ayúdame con mi tarea de matemáticas.",fuera_de_alcance,coloquial,fuera_de_alcance__col__4,estado_pqrs,0.2767
+PQRS-0412,Dime dónde queda la sede.,peticion_informacion,simplificado,peticion_informacion__sim__4,fuera_de_alcance,0.1863
+PQRS-0414,Dime dónde queda la sede!,peticion_informacion,simplificado,peticion_informacion__sim__4,fuera_de_alcance,0.2036
+PQRS-0421,"Se cayó y no se mueve, ayúdenme.",urgencia_medica,coloquial,urgencia_medica__col__4,no_entendido,0.1975
+PQRS-0510,hola. dime dónde queda la sede,peticion_informacion,simplificado,peticion_informacion__sim__4,fuera_de_alcance,0.2451
+PQRS-0534,Hola. Dime dónde queda la sede!,peticion_informacion,simplificado,peticion_informacion__sim__4,fuera_de_alcance,0.2518
+PQRS-0569,¿Cómo se hace para que me atiendan aquí?,peticion_informacion,coloquial,peticion_informacion__col__4,reclamo_demora,0.1859
+PQRS-0608,Solicito información sobre trámites de licencia de conducción.,fuera_de_alcance,formal,fuera_de_alcance__for__4,peticion_informacion,0.5599
+PQRS-0621,Ayúdame con mi tarea de matemáticas. Gracias!,fuera_de_alcance,coloquial,fuera_de_alcance__col__4,estado_pqrs,0.2723
+PQRS-0650,¿cómo se hace para que me atiendan aquí? por favor,peticion_informacion,coloquial,peticion_informacion__col__4,reclamo_demora,0.171
