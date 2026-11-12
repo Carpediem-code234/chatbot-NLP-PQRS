@@ -8,7 +8,7 @@ sys.path.insert(0, str(ROOT))
 from src.constants import INTENTS, REQUIRED_COLUMNS
 from src.data_validation import load_dataset, normalize_for_dedup, validate
 
-DATA = ROOT / "data/raw/pqrs_sintetico.csv"
+DATA = ROOT / "data/synthetic/raw/pqrs_sintetico.csv"
 
 
 @pytest.fixture(scope="module")
@@ -18,12 +18,12 @@ def df():
 
 def test_columns_and_size(df):
     assert list(df.columns) == REQUIRED_COLUMNS
-    assert len(df) == 658
+    assert len(df) == 1000
 
 
 def test_labels_and_splits(df):
     assert sorted(df["intent"].unique()) == sorted(INTENTS)
-    assert df["split"].value_counts().to_dict() == {"train": 398, "dev": 127, "test": 133}
+    assert df["split"].value_counts().to_dict() == {"train": 600, "dev": 200, "test": 200}
 
 
 def test_every_intent_in_every_split(df):
@@ -46,7 +46,7 @@ def test_no_label_conflict_same_text(df):
 
 
 def test_jsonl_matches_csv(df):
-    j = load_dataset(str(ROOT / "data/raw/pqrs_sintetico.jsonl"))
+    j = load_dataset(str(ROOT / "data/synthetic/raw/pqrs_sintetico.jsonl"))
     assert j[REQUIRED_COLUMNS].astype(str).equals(df[REQUIRED_COLUMNS].astype(str))
 
 
