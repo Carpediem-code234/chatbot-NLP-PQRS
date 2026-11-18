@@ -39,10 +39,16 @@ URGENCY_PATTERNS = [
     r"\bsuicid",
 ]
 
+_TARGET = r"(agente|asesor|asesora|humano|persona|operador|funcionario)"
+
 AGENT_PATTERNS = [
-    r"^(agente|asesor|asesora|humano|operador)$",
-    r"\b(hablar|comunicar|comunicarme|pasar|pasarme|quiero|necesito) (con )?(un |una )?"
-    r"(agente|asesor|asesora|humano|persona|operador|funcionario)\b",
+    r"^" + _TARGET + r"$",
+    # "quiero hablar con un agente", "necesito una persona", "puedo hablar con..."
+    r"\b(hablar|hablarle|comunicar|comunicarme|pasar|pasarme|quiero|necesito|"
+    r"requiero|prefiero|deseo) (con )?(un |una )?" + _TARGET + r"\b",
+    # Mandatos: "pásame con un humano", "comuníqueme con un asesor", "transfiéreme..."
+    r"\b(pasame|pasenme|comunicame|comuniqueme|conectame|conecteme|"
+    r"transfiereme|transfierame) (con )?(un |una )?" + _TARGET + r"\b",
     r"\batencion humana\b",
 ]
 
