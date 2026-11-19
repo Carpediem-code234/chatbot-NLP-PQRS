@@ -1,0 +1,69 @@
+texto,tipo_pqrs,intencion
+"buenas tardes, quisiera agendar control de crecimiento y desarrollo para mi niña de 2 años",Peticion,solicitar_cita
+"a q numero llamo para q me den turno con el odontologo",Peticion,solicitar_cita
+"hay agenda para medicina general esta semana en uribia?",Peticion,solicitar_cita
+"KIERO SITA PAL DOTOR",Peticion,solicitar_cita
+"Solicito respetuosamente programar consulta de control para mi madre, paciente hipertensa.",Peticion,solicitar_cita
+"me mandaron una resonancia y no se donde la autorizan",Peticion,solicitar_autorizacion
+"que papeles necesito para que aprueben la cirugia de mi esposo",Peticion,solicitar_autorizacion
+"el especialista ordeno terapias, quien las autoriza?",Peticion,solicitar_autorizacion
+"nesesito q me aprueben la orden del esamen",Peticion,solicitar_autorizacion
+"necesito copia del resultado de la citologia",Peticion,solicitar_documento
+"me pueden mandar la epicrisis de cuando estuvo hospitalizado mi papa",Peticion,solicitar_documento
+"Requiero certificado de atención para presentarlo en el trabajo.",Peticion,solicitar_documento
+"como saco el certificado de vacunacion del niño",Peticion,solicitar_documento
+"mi abuela solo habla wayuunaiki, puede ir alguien que le explique en su lengua",Peticion,solicitar_interprete
+"jamaya, mi mama no entiende el español, necesitamos que alguien le traduzca en el hospital",Peticion,solicitar_interprete
+"hay promotor de salud wayuu que nos acompañe en la consulta?",Peticion,solicitar_interprete
+"radique un derecho de peticion el mes pasado y no se nada",Peticion,consultar_estado
+"ya respondieron lo que puse la otra vez?",Peticion,consultar_estado
+"mi radicado es 20451, que ha pasado con eso",Peticion,consultar_estado
+"la señora del mostrador me humillo delante de todos",Queja,mal_trato
+"el vigilante no nos dejo entrar y nos trato como animales",Queja,mal_trato
+"el doctor ni me miro, me atendio de mala gana",Queja,mal_trato
+"Manifiesto mi inconformidad por el trato irrespetuoso recibido por parte del médico de turno.",Queja,mal_trato
+"se burlaron de mi abuela por su manta wayuu",Queja,mal_trato
+"desde las 5 de la mañana en la fila y todavia nada",Queja,demora_atencion
+"mi hijo con tuttaa y nadie lo atiende, llevamos 6 horas",Queja,demora_atencion
+"ESTOY ESPERANDO DESDE TEMPRANO Y NO ME LLAMAN",Queja,demora_atencion
+"la atencion en urgencias es lentisima, mi papa esta ayuulii y lo tienen en una silla",Queja,demora_atencion
+"el centro de salud se esta cayendo, el techo gotea",Queja,infraestructura
+"no hay ventiladores y hace un calor terrible en la sala de espera",Queja,infraestructura
+"el puesto de salud de la comunidad lleva meses cerrado",Queja,infraestructura
+"no hay agua potable en el hospital, los baños no sirven",Queja,infraestructura
+"la farmacia no tiene la insulina de mi mama hace 20 dias",Reclamo,medicamento_no_entregado
+"me entregaron solo la mitad de las pastillas",Reclamo,medicamento_no_entregado
+"no me dan la medisina pa la presion",Reclamo,medicamento_no_entregado
+"Presento reclamo porque el medicamento formulado no ha sido dispensado después de tres semanas.",Reclamo,medicamento_no_entregado
+"vinimos desde la alta guajira y nos dijeron que la consulta se cancelo",Reclamo,cita_incumplida
+"el especialista no vino y nadie aviso",Reclamo,cita_incumplida
+"me reprogramaron la sita 3 veces",Reclamo,cita_incumplida
+"tenia la cirugia programada para hoy y la suspendieron",Reclamo,cita_incumplida
+"me cobraron la consulta y yo soy del regimen subsidiado",Reclamo,cobro_indebido
+"tuve que pagar las vendas y la jeringa",Reclamo,cobro_indebido
+"me pidieron plata para darme el turno",Reclamo,cobro_indebido
+"Solicito el reembolso del valor cobrado indebidamente por el examen de laboratorio.",Reclamo,cobro_indebido
+"no le quisieron hacer la ecografia a mi esposa embarazada",Reclamo,servicio_negado
+"dicen que mi eps no tiene contrato y no me atienden",Reclamo,servicio_negado
+"le negaron la remision a riohacha a mi hijo",Reclamo,servicio_negado
+"no me quieren atender xq no tengo la cedula",Reclamo,servicio_negado
+"podrian dar las fichas por whatsapp para no madrugar",Sugerencia,mejorar_atencion
+"ojala abrieran tambien los sabados",Sugerencia,mejorar_atencion
+"Recomendamos capacitar al personal en atención humanizada.",Sugerencia,mejorar_atencion
+"seria mejor que llamaran a uno por el nombre y no por numero",Sugerencia,mejorar_atencion
+"que vengan los medicos a las rancherias de vez en cuando",Sugerencia,enfoque_intercultural
+"deberian contratar enfermeras wayuu",Sugerencia,enfoque_intercultural
+"pongan carteles con dibujos para los que no saben leer",Sugerencia,enfoque_intercultural
+"sugerimos coordinar con los piaches y la medicina tradicional",Sugerencia,enfoque_intercultural
+"jamaya",Otro,saludo
+"buen dia",Otro,saludo
+"wattachonya",Otro,saludo
+"Buenas, ¿hay alguien?",Otro,saludo
+"mil gracias, muy amables",Otro,agradecimiento
+"anayaawatsüja'a",Otro,agradecimiento
+"dios le pague",Otro,agradecimiento
+"vale gracias",Otro,agradecimiento
+"cuando pagan el subsidio de familias en accion",Otro,fuera_de_dominio
+"vendo chivos interesados escribir",Otro,fuera_de_dominio
+"cual es el numero de la registraduria",Otro,fuera_de_dominio
+"hay partido hoy?",Otro,fuera_de_dominio
