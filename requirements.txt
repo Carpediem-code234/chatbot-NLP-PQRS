@@ -9,5 +9,10 @@ pytest==9.1.1
 jupyter
 nbconvert==7.17.2
 ipykernel==7.4.0
+# Fase 3: API y WhatsApp
+fastapi==0.165.0
+uvicorn==0.54.0
+httpx==0.28.1
+python-dotenv==1.2.3
 # Solo para el modelo BETO (sección 8 del notebook 02, ejecutar en Colab con GPU):
 # torch transformers datasets accelerate

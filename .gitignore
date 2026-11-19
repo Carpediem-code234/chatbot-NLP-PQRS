@@ -35,3 +35,6 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Fase 3: base de datos de PQRS radicadas (contiene datos personales: NO versionar)
+data/*.db
+data/*.db-journal
