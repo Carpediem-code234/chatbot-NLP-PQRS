@@ -21,13 +21,14 @@ El usuario escribe al número de WhatsApp; Meta reenvía el mensaje a nuestra AP
 mensaje de WhatsApp
    │
    ├─ R0  ¿sin palabras (vacío, solo emojis)?  ──► "No entendí, ¿me cuentas qué necesitas?"
-   ├─ R1  ¿alerta clínica (convulsiona, no respira…)? ──► remitir a urgencias (123)
+   ├─ R1  ¿alerta clínica (convulsiona, no respira, dolor de pecho, intoxicación,
+   │       sangrado, quemaduras, riesgo suicida…)? ──► remitir a urgencias (123)
    │
    ├─ normalización: minúsculas, sin tildes, abreviaturas (q, xq, pa), ortografía (sita→cita),
    │                 wayuunaiki→español con glosario (tottoolu→médico, ayuulii→enfermo)
    ├─ modelo M3: TF-IDF palabras ∪ n-gramas de caracteres ∪ rasgos estructurales → SVM calibrada
    │
-   └─ R2  ¿confianza < τ (0,80)? ──► preguntar con botones: pedir / queja / reclamo / sugerencia
+   └─ R2  ¿confianza < τ (0,55)? ──► preguntar con botones: pedir / queja / reclamo / sugerencia
           si no ──► "Entendí que es un reclamo sobre un medicamento que no te entregaron. ¿Es correcto?"
                          │ sí
                          ├─ pide el documento (o "no tengo")
@@ -49,21 +50,24 @@ Conversación de ejemplo:
 
 Además: las reglas de urgencia y de "hablar con un agente" funcionan en **cualquier** momento; "aa" (sí en wayuunaiki) sirve para confirmar; `cancelar` reinicia; las notas de voz reciben un aviso; el usuario puede preguntar por su radicado ("como va el PQRS-…"); y un funcionario responde las PQRS desde la API y el usuario recibe el aviso por WhatsApp.
 
-## Resultados (Fase 2)
+## Resultados
 
-F1-macro en la clasificación del **tipo de PQRS** (5 clases). Validación y test usan **plantillas nunca vistas en entrenamiento**; el test externo son 68 mensajes redactados a mano.
+Dataset actual: **10.731 mensajes** sintéticos de **310 plantillas**, 5 tipos de PQRS y 23 intenciones (más 30 mensajes sin contenido para la regla R0). La partición es **por plantilla** (20 % test, 20 % validación de cada intención), de modo que validación y test solo tienen **plantillas nunca vistas en entrenamiento**; el test externo son 68 mensajes redactados a mano.
+
+F1-macro en la clasificación del **tipo de PQRS** (5 clases):
 
 | Modelo | F1 val | AUC val | F1 test (10 particiones) | F1 externo (10 particiones) |
 |---|---|---|---|---|
-| M0 · Clase mayoritaria | 0,113 | 0,500 | — | — |
-| M1 · Baseline: TF-IDF palabras + regresión logística | 0,593 | 0,826 | 0,632 ± 0,093 | 0,665 ± 0,036 |
-| M2 · TF-IDF + Naive Bayes complementario | 0,555 | 0,875 | 0,660 ± 0,116 | 0,569 ± 0,049 |
-| **M3 · Propuesto** | **0,657** | **0,930** | **0,677 ± 0,095** | **0,675 ± 0,030** |
+| M0 · Clase mayoritaria | 0,093 | 0,500 | — | — |
+| M1 · Baseline: TF-IDF palabras + regresión logística | **0,893** | 0,990 | **0,894 ± 0,048** | 0,810 ± 0,046 |
+| M2 · TF-IDF + Naive Bayes complementario | 0,813 | 0,981 | 0,833 ± 0,033 | 0,778 ± 0,029 |
+| **M3 · Propuesto** (desplegado) | 0,809 | **0,993** | 0,878 ± 0,046 | **0,863 ± 0,040** |
 
-- M3 es el mejor en promedio, pero la ventaja sobre el baseline es **moderada** y está dentro de la variación entre particiones.
-- Con τ = 0,80, lo que el bot decide solo tiene ~92 % de exactitud en test, pero decide solo en ~36 % de los mensajes; el resto lo resuelve preguntando.
-- La **intención fina** (17 clases) aún no es usable (F1 ≈ 0,3–0,45).
-- **Cuello de botella: la diversidad de los datos** (≈ 70 plantillas), no el algoritmo. Detalle en `notebooks/02_modelado_PQRS.ipynb` §9.
+- Con más datos, el **baseline M1 alcanza a M3** en plantillas sintéticas no vistas (la diferencia está dentro de la variación entre particiones).
+- M3 sigue siendo el mejor en el **test externo** redactado a mano (+0,05 sobre M1), que es lo más parecido a usuarios reales; por eso es el modelo del bot. Su punto débil es la clase *Otro* (saludos, fuera de dominio), que confunde con peticiones.
+- El umbral τ se elige en validación como el menor que da ≥ 90 % de exactitud en lo que el bot decide solo: **τ = 0,55**, con el que decide solo en ~95 % de los mensajes de validación (exactitud ~91 %); el resto lo resuelve preguntando. Curva completa en `results/umbral_tau.csv`.
+- La **intención fina** (23 clases) mejoró pero sigue siendo débil: F1 ≈ 0,58 en test y 0,55 en el externo con M3. El bot la usa solo para redactar la confirmación, que el usuario siempre valida.
+- Las métricas en `notebooks/02_modelado_PQRS.ipynb` corresponden al dataset anterior (≈ 3.100 mensajes); los valores vigentes son los de `results/`.
 
 Bitácora de experimentos: `results/experimentos.csv` · métricas: `results/resultados_modelos.csv` · figuras: `results/figuras/`.
 
@@ -91,13 +95,17 @@ src/
   datos.py            limpieza, deduplicación, partición por plantilla sin fuga
   modelos.py          M0, M1, M2, M3
   evaluacion.py       métricas, 10 particiones, curva del umbral τ
-  bot.py, predecir.py clasificador con reglas R0/R1/R2 desde la terminal (Fase 2)
-  entrenar.py         entrena, evalúa y guarda models/modelo_pqrs_m3.joblib
+  bot.py              clasificador con reglas R0/R1/R2 (Fase 2)
+  entrenar.py         entrena, evalúa, elige τ y guarda models/modelo_pqrs_m3.joblib
   predecir.py         clasifica mensajes desde la terminal
-tests/                pruebas de preprocesamiento, datos, modelos, reglas, diálogo y webhook
+tests/
+  test_preprocesamiento.py, test_datos.py, test_modelos.py   Fase 2
+  test_bot_whatsapp.py  reglas de seguridad, diálogo, webhook y API
 results/              métricas, bitácora y figuras
 models/               modelo entrenado (no versionado; se regenera)
-docs/                 guía de despliegue en WhatsApp y documento técnico
+docs/
+  DESPLIEGUE_WHATSAPP.md   conectar el bot a un número de WhatsApp
+  PLAN_DE_COMMITS_FASE3.md orden de commits de esta fase
 Dockerfile            imagen del servicio (entrena el modelo al construirse)
 .env.example          variables de entorno necesarias (copiar a .env)
 ```
@@ -109,8 +117,8 @@ python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
-python -m pytest                   # 79 pruebas
-python -m src.entrenar             # entrena, evalúa y guarda el modelo (~15 s en CPU)
+python -m src.entrenar             # entrena, evalúa y guarda el modelo (≈ 2 min en CPU; --rapido omite las 10 particiones)
+python -m pytest                   # 97 pruebas (las del bot se omiten si no hay modelo entrenado)
 python -m app.simular              # conversar con el bot en la terminal, sin WhatsApp
 ```
 
@@ -133,13 +141,14 @@ API documentada en `http://localhost:8000/docs`. Para conectarlo a un número de
 | `GET /api/eventos` | urgencias detectadas, solicitudes de agente, notas de voz |
 | `GET /health` | estado del servicio |
 
-Para regenerar el dataset sintético: `python -m src.generar_dataset` (con la semilla por defecto produce exactamente el CSV versionado; hay una prueba que lo verifica).
+`python -m src.generar_dataset` regenera las primeras 3.165 filas del CSV versionado (plantillas, ruido y audio transcrito) con la semilla por defecto; hay una prueba que lo verifica. Las 7.566 filas de la ampliación (`fuente = sintetico_combinatorio_v2`) aún **no tienen script generador** en el repositorio.
 
 Para ejecutar el notebook 01 se necesita el corpus en `data/external/wayuu.zip`. El modelo BETO (notebook 02, §8) se ejecuta en Google Colab con GPU cambiando `RUN_BERT = True`.
 
 ## Limitaciones
 
-- Datos sintéticos generados por plantillas: vocabulario reducido y métricas optimistas.
+- Datos sintéticos generados por plantillas: vocabulario reducido y métricas optimistas. La ampliación a 10.731 mensajes es combinatoria (mismas ideas con otras palabras), así que suma menos diversidad de la que sugiere el tamaño.
+- La clase *Otro* (saludos, agradecimientos, fuera de dominio) es la más débil: el bot tiende a tratarla como petición.
 - El test externo lo redactó el mismo equipo que diseñó las plantillas.
 - Glosario wayuunaiki pequeño y sin validar; faltan términos clave (*hospital, cita, vacuna, salud*).
 - La regla de urgencias es una lista de frases, no un modelo: no reemplaza el triage.
