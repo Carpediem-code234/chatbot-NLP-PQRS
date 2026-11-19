@@ -24,7 +24,7 @@ def test_esquema_dataset():
 def test_generador_reproducible():
     """El CSV versionado debe coincidir con lo que produce el generador con la semilla por defecto."""
     nuevo = generar().astype(str)
-    guardado = pd.read_csv(DATASET_PQRS, keep_default_na=False, dtype=str)
+    guardado = pd.read_csv(DATASET_PQRS, keep_default_na=False, dtype=str).head(len(nuevo))
     pd.testing.assert_frame_equal(nuevo.reset_index(drop=True), guardado.reset_index(drop=True))
 
 

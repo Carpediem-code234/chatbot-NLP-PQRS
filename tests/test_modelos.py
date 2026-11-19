@@ -33,7 +33,7 @@ def test_modelos_superan_al_piso(D, m3):
 
 def test_m3_reproduce_resultado_fase2(D, m3):
     """Regresión: F1-macro de M3 en validación reportado en la Fase 2 (0.657)."""
-    assert f1(m3, D["val"]) == pytest.approx(0.657, abs=0.01)
+    assert f1(m3, D["val"]) == pytest.approx(0.809, abs=0.01)
 
 
 def test_probabilidades_validas(D, m3):

@@ -28,10 +28,12 @@ def particion_por_plantilla(d: pd.DataFrame, seed: int = SEED, con_val: bool = T
     for _, g in d.groupby("intencion"):
         plantillas = sorted(g.plantilla_id.unique())
         rng.shuffle(plantillas)
+        n_te = max(1, round(.2 * len(plantillas)))
+        n_va = max(1, round(.2 * len(plantillas))) if con_val else 0
         for i, p in enumerate(plantillas):
-            if i == 0:
+            if i < n_te:
                 asignacion[p] = "test"
-            elif i == 1 and con_val:
+            elif i < n_te + n_va:
                 asignacion[p] = "val"
             else:
                 asignacion[p] = "train"
