@@ -1,0 +1,13 @@
+experimento,modelo,hiperparametros,F1_macro_CV,F1_macro_val,acc_val,seg_entrenamiento
+E0 clase mayoritaria,M0,{},0.0,0.1132,0.3946,0.0
+E1 malla baseline,M1,"{""clf__C"": 30, ""tfidf__ngram_range"": [1, 1]}",0.4539,0.5927,0.6212,0.0
+E1 malla baseline,M1,"{""clf__C"": 10, ""tfidf__ngram_range"": [1, 1]}",0.444,0.5999,0.6212,0.0
+E1 malla baseline,M1,"{""clf__C"": 0.1, ""tfidf__ngram_range"": [1, 1]}",0.4394,0.5537,0.5737,0.0
+E2 malla NB,M2,"{""clf__alpha"": 0.05}",0.5497,0.5546,0.626,0.0
+E3.1 caracteres sobre texto crudo,M3,"{""texto"": ""texto"", ""usar_meta"": false}",0.4999,0.6079,0.6466,0.6
+"E3.2 + normalización (abreviaturas, ortografía)",M3,"{""texto"": ""texto_norm_sin_way"", ""usar_meta"": false}",0.4941,0.612,0.6466,0.5
+E3.3 + traducción wayuunaiki con glosario,M3,"{""texto"": ""texto_norm"", ""usar_meta"": false}",0.5002,0.6167,0.6466,0.5
+E3.4 + rasgos estructurales,M3,"{""texto"": ""texto_norm"", ""usar_meta"": true}",0.5478,0.666,0.6672,1.0
+E3.5 malla C × rango n-gramas,M3,"{""clf__estimator__C"": 3.0, ""feats__caracteres__tf__ngram_range"": [3, 5]}",0.561,0.6565,0.6545,0.0
+E3.5 malla C × rango n-gramas,M3,"{""clf__estimator__C"": 1.0, ""feats__caracteres__tf__ngram_range"": [3, 5]}",0.5587,0.6678,0.6656,0.0
+E3.5 malla C × rango n-gramas,M3,"{""clf__estimator__C"": 3.0, ""feats__caracteres__tf__ngram_range"": [2, 5]}",0.5507,0.66,0.6577,0.0
