@@ -1,0 +1,13 @@
+# Probado con Python 3.13
+numpy==2.5.3
+pandas==3.0.5
+scikit-learn==1.9.1
+matplotlib==3.11.2
+seaborn==0.13.2
+joblib==1.6.0
+pytest==9.1.1
+jupyter
+nbconvert==7.17.2
+ipykernel==7.4.0
+# Solo para el modelo BETO (sección 8 del notebook 02, ejecutar en Colab con GPU):
+# torch transformers datasets accelerate

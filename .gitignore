@@ -8,26 +8,30 @@ dist/
 venv/
 .python-version
 
-# Testing, linting and notebooks
+# Testing / notebooks
 .pytest_cache/
-.mypy_cache/
-.ruff_cache/
 .ipynb_checkpoints/
-data/external/wayuu_es/
-data/synthetic/eda/
-results/eda/
 
-# Local configuration and secrets
+# Corpus externo español–wayuunaiki (49 MB): se descarga aparte, ver data/README.md
+data/external/*
+!data/external/.gitkeep
+notebooks/wayuu_data/
+
+# Modelos entrenados: se regeneran con `python -m src.entrenar`
+models/*
+!models/.gitkeep
+
+# Salidas temporales de BETO
+notebooks/beto_lr*/
+
+# Configuración local y secretos
 .env
 .env.*
 !.env.example
 
-# OS/editor files
+# Sistema operativo / editores
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
 
-# Pesos/modelos: se regeneran con los scripts (el baseline pesa <1 MB, pero no se versiona por defecto)
-models/*
-!models/.gitkeep
-# Candados de evaluación de test: SÍ versionar (auditoría). Salidas voluminosas:
-results/**/*.npy
