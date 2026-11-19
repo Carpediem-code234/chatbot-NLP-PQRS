@@ -34,6 +34,20 @@ def test_detecta_urgencias(texto):
 def test_no_falsas_alarmas(texto):
     assert revisar(texto) is None
 
+@pytest.mark.parametrize("texto", [
+    "me duele mucho el pecho", "me quiero matar", "ya no quiero vivir", "quiero matarme",
+    "se tomó veneno", "se tomo el gramoxone", "me estoy desangrando", "mi esposa está de parto y sangra",
+    "está embarazada y está sangrando", "mi bebé se puso morado", "me picó un alacrán",
+    "mi hijo se quemó con agua hirviendo", "tuve un accidente de moto", "mi papá está muy grave"])
+def test_detecta_urgencias_nuevas(texto):
+    assert revisar(texto) == "urgencia"
+
+
+@pytest.mark.parametrize("texto", [
+    "necesito cita de control prenatal", "me cobraron la consulta", "el médico fue grosero",
+    "la eps me negó la orden"])
+def test_no_falsas_alarmas_nuevas(texto):
+    assert revisar(texto) is None
 
 @pytest.mark.parametrize("texto", ["agente", "quiero hablar con una persona", "necesito un asesor",
                                    "pásame con un humano", "kiero una persona de verdad"])
@@ -70,7 +84,7 @@ def test_flujo_completo_reclamo(bot):
 
 
 def test_baja_confianza_muestra_menu_y_radica_por_menu(bot):
-    assert charla(bot, "1", "lo de la otra vez") == [M.MENU]
+    assert charla(bot, "1", "lo mismo de antes") == [M.MENU]
     charla(bot, "1", "4", "no tengo")
     p = bot.db.listar()[0]
     assert (p["tipo"], p["origen"], p["documento"]) == ("Sugerencia", "menu", None)

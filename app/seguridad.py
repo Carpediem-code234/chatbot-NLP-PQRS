@@ -21,8 +21,20 @@ URGENCIA = [
     r"\bconvulsion(es|ando)?\b", r"\bconvulsiona(ndo)?\b", r"\bcombulsi\w*", r"\bconbulsi\w*",
     r"\bsangr(a|ando|e) (mucho|bastante|sin parar)\b", r"\bsangrado (abundante|fuerte)\b", r"\b(h)?emorragia\b",
     r"\bsobredosis\b", r"\benvenen(o|ado|ada|amiento)\b", r"\bse (esta )?muriendo\b",
-    r"\b(lo|la|me) (mordio|pico) una? (culebra|serpiente|vibora|cascabel)\b",
     r"\bquiero (morir|morirme)\b", r"\bquitarme la vida\b", r"\bsuicid",
+    # ── Añadidas: casos que antes NO se detectaban ──
+    r"\bduele\w* (mucho |muy |demasiado |fuerte |duro )*el pecho\b",                 # "me duele mucho el pecho"
+    r"\b(me|se) (quiero|quiere|voy a|va a) matar\b", r"\bmatarme\b",                 # ideación suicida
+    r"\bno (quiero|quiere) (vivir|seguir viviendo)\b", r"\bacabar con mi vida\b",
+    r"\bveneno\b", r"\bintoxica\w*",                                               # intoxicación
+    r"\bse (tomo|trago|bebio) (el |la |un |una )?(cloro|creolina|gramoxone|raticida|matarratas)\b",
+    r"\bdesangr\w*",                                                                 # sangrado
+    r"\b(parto|embarazada|embarazo)\b.*\bsangr\w*", r"\bsangr\w*.*\b(parto|embarazada|embarazo)\b",
+    r"\bse (puso|esta poniendo|esta) (morado|morada|azul)\b", r"\blabios morados\b",  # falta de oxígeno
+    r"\b(lo|la|me|le) (mordio|pico) (un |una )?(culebra|serpiente|vibora|cascabel|alacran|escorpion)\b",
+    r"\bse quemo\b", r"\bquemadura\w*",                                             # quemaduras
+    r"\baccidente\b",                                                                # accidentes
+    r"\b(esta|sigue) (muy )?grave\b",
 ]
 
 _DESTINO = r"(agente|asesor|asesora|humano|persona|operador|operadora|funcionario|funcionaria)"
