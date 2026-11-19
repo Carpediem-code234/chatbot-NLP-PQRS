@@ -1,0 +1,9 @@
+.git
+.venv
+.env
+data/external
+data/*.db
+models/*.joblib
+notebooks
+results
+__pycache__
