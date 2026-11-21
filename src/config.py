@@ -8,8 +8,10 @@ MODELS = RAIZ / "models"
 RESULTS = RAIZ / "results"
 
 DATASET_PQRS = DATA_RAW / "pqrs_salud_sintetico.csv"
+REGISTROS_NUEVOS = DATA_RAW / "registros_nuevos.csv"   # agregados con #nuevo o cargue masivo
 TEST_EXTERNO = DATA_RAW / "pqrs_test_externo.csv"
 GLOSARIO = DATA_RAW / "glosario_salud_esp_way.csv"
+GLOSARIO_AMPLIADO = DATA_RAW / "glosario_way_esp_ampliado.csv"   # generado por src/glosario_wayuu.py
 MODELO = MODELS / "modelo_pqrs_m3.joblib"
 
 SEED = 42

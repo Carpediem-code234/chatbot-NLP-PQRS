@@ -6,7 +6,7 @@ from functools import lru_cache
 import numpy as np
 import pandas as pd
 
-from src.config import GLOSARIO
+from src.config import GLOSARIO, GLOSARIO_AMPLIADO
 
 APOS = "'’‘ʼꞌꞋ`´"
 EMOJI_RE = re.compile(r"[\U0001F300-\U0001FAFF☀-➿]")
@@ -34,8 +34,14 @@ def cargar_way2esp(ruta=str(GLOSARIO)):
         w = way.lower().strip()
         for c in APOS:
             w = w.replace(c, "'")
+        w = quitar_tildes(w)                     # 'wanülü' → 'wanulu', igual que el texto normalizado
         if " " not in w and len(w) > 2:          # evita formas muy ambiguas como 'aa' (sí)
             mapa.setdefault(w, esp.replace("tener ", ""))
+    # Glosario ampliado desde el corpus paralelo wayuu (si existe); el glosario original tiene prioridad
+    if GLOSARIO_AMPLIADO.exists():
+        amp = pd.read_csv(GLOSARIO_AMPLIADO, keep_default_na=False)
+        for w, esp in zip(amp.way, amp.esp):
+            mapa.setdefault(w, esp)
     return mapa
 
 
