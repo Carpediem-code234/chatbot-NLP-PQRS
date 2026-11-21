@@ -38,3 +38,6 @@ Thumbs.db
 # Fase 3: base de datos de PQRS radicadas (contiene datos personales: NO versionar)
 data/*.db
 data/*.db-journal
+
+# Registros agregados con #nuevo (los genera el bot en cada instalación)
+data/raw/registros_nuevos.csv
