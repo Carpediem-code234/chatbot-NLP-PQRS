@@ -2,12 +2,16 @@
 import numpy as np
 import pandas as pd
 
-from src.config import DATASET_PQRS, SEED, TEST_EXTERNO
+from src.config import DATASET_PQRS, SEED, TEST_EXTERNO, REGISTROS_NUEVOS
 from src.preprocesamiento import preparar
 
 
 def cargar_dataset(ruta=DATASET_PQRS) -> pd.DataFrame:
-    return pd.read_csv(ruta, keep_default_na=False, dtype={"texto": str})
+    d = pd.read_csv(ruta, keep_default_na=False, dtype={"texto": str})
+    if ruta == DATASET_PQRS and REGISTROS_NUEVOS.exists():     # suma los registros agregados a mano
+        d = pd.concat([d, pd.read_csv(REGISTROS_NUEVOS, keep_default_na=False, dtype={"texto": str})],
+                      ignore_index=True)
+    return d
 
 
 def limpiar(data: pd.DataFrame):

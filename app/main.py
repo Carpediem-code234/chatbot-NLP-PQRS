@@ -4,6 +4,7 @@ Ejecutar:   uvicorn app.main:app --host 0.0.0.0 --port 8000
 Documentación interactiva: http://localhost:8000/docs
 """
 import json
+import asyncio
 import logging
 from contextlib import asynccontextmanager
 from typing import Literal
@@ -30,6 +31,13 @@ Chatbot incluyente de **Peticiones, Quejas, Reclamos y Sugerencias (PQRS)** en s
 * `/api/pqrs` — consulta y gestión de las PQRS radicadas (requiere cabecera `X-Admin-Token`).
 """
 
+def _notificador(app):
+    """Permite enviar un WhatsApp desde el hilo del reentrenamiento (que corre fuera del event loop)."""
+    loop = asyncio.get_running_loop()
+
+    def notificar(tel, texto):
+        asyncio.run_coroutine_threadsafe(app.state.wa.enviar_texto(tel, texto), loop)
+    return notificar
 
 def crear_app(config: Config | None = None, cliente=None) -> FastAPI:
     cfg = config or Config()
@@ -42,7 +50,8 @@ def crear_app(config: Config | None = None, cliente=None) -> FastAPI:
         app.state.db = Almacen(cfg.db_path)
         app.state.db.limpiar_procesados()
         app.state.modelo = Modelo(cfg.modelo_path)
-        app.state.dialogo = Dialogo(app.state.db, app.state.modelo, cfg.minutos_sesion)
+        app.state.dialogo = Dialogo(app.state.db, app.state.modelo, cfg.minutos_sesion, cfg.admins_wa,
+            modelo_path=cfg.modelo_path, notificar=_notificador(app))
         app.state.wa = cliente or ClienteWhatsApp(cfg.wa_token, cfg.phone_number_id, cfg.graph_version)
         log.info("Bot listo · modelo %s · τ=%.2f · BD %s", cfg.modelo_path.name, app.state.modelo.tau, cfg.db_path)
         yield

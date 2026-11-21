@@ -25,6 +25,9 @@ class Config:
     db_path: Path = field(default_factory=lambda: Path(os.getenv("DB_PATH", str(RAIZ / "data" / "pqrs.db"))))
     modelo_path: Path = field(default_factory=lambda: Path(os.getenv("MODELO_PATH", str(MODELO))))
     minutos_sesion: int = field(default_factory=lambda: int(os.getenv("MINUTOS_SESION", "30")))
+        # Números que pueden usar #nuevo (formato 57XXXXXXXXXX, separados por coma)
+    admins_wa: frozenset = field(default_factory=lambda: frozenset(
+        "".join(c for c in n if c.isdigit()) for n in os.getenv("ADMIN_WA", "").split(",") if n.strip()))
 
     def advertencias(self):
         faltan = [n for n, v in [("WA_TOKEN", self.wa_token), ("PHONE_NUMBER_ID", self.phone_number_id),

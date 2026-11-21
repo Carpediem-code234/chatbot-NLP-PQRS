@@ -18,6 +18,8 @@ import pandas as pd
 
 from app import mensajes as M
 from app.almacen import Almacen
+from app.formulario_admin import FormularioAdmin
+from app.reentrenamiento import Reentrenador
 from app.seguridad import revisar
 from src.preprocesamiento import cargar_way2esp, normalizar, preparar
 
@@ -64,12 +66,33 @@ def _primera_palabra(norm: str) -> str:
 
 
 class Dialogo:
-    def __init__(self, almacen: Almacen, modelo: Modelo, minutos_sesion: int = 30):
+    def __init__(self, almacen: Almacen, modelo: Modelo, minutos_sesion: int = 30, admins=frozenset(),
+                 modelo_path=None, notificar=None):
         self.db, self.modelo, self.minutos = almacen, modelo, minutos_sesion
+        self.formulario = FormularioAdmin(almacen, set(admins))
+        # Reentrenamiento automático tras cada #nuevo (solo si se indica dónde está el modelo y cómo avisar)
+        self.modelo_path, self.notificar = modelo_path, notificar
+        if modelo_path and notificar:
+            self.reentrenador = Reentrenador(self._fin_reentreno)
+            self.formulario.al_guardar = self._pedir_reentreno
+
+    def _pedir_reentreno(self, tel):
+        if self.reentrenador.lanzar(tel):
+            return "⏳ Reentrenando el modelo con el nuevo dato (1–2 min). Te aviso al terminar."
+        return "⏳ Ya hay un reentrenamiento en curso; al terminar se hará otro que incluye este dato."
+
+    def _fin_reentreno(self, tel, ok, resumen):
+        if ok:
+            self.modelo = Modelo(self.modelo_path)                 # recarga en caliente, sin reiniciar
+            self.notificar(tel, f"✅ *Modelo actualizado*\n{resumen}")
+        else:
+            self.notificar(tel, f"⚠️ El reentrenamiento falló; sigo con el modelo anterior.\n{resumen}")
 
     # ── punto de entrada ─────────────────────────────────────────────────────────
     def responder(self, telefono: str, texto: str) -> list[str]:
         estado, datos = self.db.leer_conversacion(telefono, self.minutos)
+        if self.formulario.activa(telefono, texto, estado):      # #nuevo (solo administradores)
+            return self.formulario.responder(telefono, texto, estado, datos)
         norm = normalizar(texto)
 
         regla = revisar(texto)
